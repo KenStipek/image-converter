@@ -48,11 +48,26 @@ end
 # Get image conversion paramaters from full path and return hash.
 def image_magick_params(full_path)
   params = Hash.new
-  params.merge!(pair_array_to_hash(DEFAULTS.split('/'))) unless DEFAULTS.empty?
+
+  # Add default paramaters
+  if !DEFAULTS.nil?
+    params.merge!(pair_array_to_hash(DEFAULTS.split('/')))
+  end
+
+  # Add path params if there are any
   path_params = full_path.split("/#{SPLIT_CHAR}/")
   if path_params.count > 1
     params.merge!(pair_array_to_hash(path_params.first.split('/').reject(&:empty?)))
   end
+
+  # Add template if requested
+  if !params[TEMPLATE_MARK].nil?
+    templates = TEMPLATES.split('&')
+    template_params = templates[templates.index(params[TEMPLATE_MARK]) + 1]
+    params.merge!(pair_array_to_hash(template_params.split('/')))
+    params.delete(TEMPLATE_MARK)
+  end
+
   params
 end
 
