@@ -4,7 +4,7 @@ require 'open-uri'
 def do_magick(image, params)
   new_image = image
   params.each_pair do |key, value|
-    puts "Doing #{key} with these options #{value}"
+    puts "Performing #{key} with options: #{value == '~' ? 'DEFAULTS' : value.split(';').join(', ')}"
     if value != '~'
       new_image = new_image.send(key, *value.split(';').map {|v| from_string(v) })
     else 
@@ -37,7 +37,6 @@ def prepare_magick(image_path, params = {})
   image = Magick::ImageList.new
   if (image.from_blob(get_image(image_path).read))
     image = image.first
-    # Add default params to params
     image = do_magick(image, params)
     image.to_blob
   else
@@ -45,3 +44,16 @@ def prepare_magick(image_path, params = {})
     # 404 error
   end
 end
+
+# Get image conversion paramaters from full path and return hash.
+def image_magick_params(full_path)
+  params = Hash.new
+  params.merge!(pair_array_to_hash(DEFAULTS.split('/'))) unless DEFAULTS.empty?
+  path_params = full_path.split("/#{SPLIT_CHAR}/")
+  if path_params.count > 1
+    params.merge!(pair_array_to_hash(path_params.first.split('/').reject(&:empty?)))
+  end
+  params
+end
+
+
