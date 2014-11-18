@@ -4,12 +4,14 @@ require 'open-uri'
 def do_magick(image, params)
   new_image = image
   params.each_pair do |key, value|
-    puts "Performing #{key} with options: #{value == '~' ? 'DEFAULTS' : value.split(';').join(', ')}"
-    if value != '~'
-      new_image = new_image.send(key, *value.split(';').map {|v| from_string(v) })
-    else 
-      new_image = new_image.send(key)
-    end 
+    if WHITELIST.include?(key)
+      puts "Performing #{key} with options: #{value == '~' ? 'DEFAULTS' : value.split(';').join(', ')}"
+      if value != '~'
+        new_image = new_image.send(key, *value.split(';').map {|v| from_string(v) })
+      else 
+        new_image = new_image.send(key)
+      end
+    end
   end
   new_image
 end
