@@ -1,11 +1,13 @@
 require 'sinatra'
 require './bin/helper_methods'
 require './bin/magick'
+require './bin/magick_methods'
 
 DEFAULTS      = ENV['DEFAULTS']
 TEMPLATES     = ENV['TEMPLATES']
 TEMPLATE_MARK = ENV['TEMPLATE_MARK'] || 'template'
 SPLIT_CHAR    = ENV['SPLIT_CHAR'] || '_'
+WHITELIST     = ENV['WHITELIST'] ? ENV['WHITELIST'].split(',') : magick_methods
 
 get '/favicon.ico' do
 end
