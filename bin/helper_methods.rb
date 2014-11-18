@@ -1,19 +1,17 @@
 
 # Extract just the image path from the full path.
 def image_path(full_path)
-	image_path = ENV['SPLIT_CHAR'] || full_path.split('/_/')
+	if full_path.index("/#{SPLIT_CHAR}/")
+		image_path = full_path.split("/#{SPLIT_CHAR}/")
 
-	if image_path.length >= 2
-		image_path.last
+		if image_path.length >= 2
+			image_path.last
+		else
+			false
+		end
 	else
-		false
+		full_path
 	end
-end
-
-# Get image conversion paramaters from full path and return hash.
-def image_magick_params(full_path)
-	params = ENV['SPLIT_CHAR'] || full_path.split('/_/')
-	pair_array_to_hash params.first.split('/').reject(&:empty?)
 end
 
 def pair_array_to_hash(ary)
