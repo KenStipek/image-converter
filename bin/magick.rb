@@ -3,9 +3,10 @@ require 'open-uri'
 
 def do_magick(image, params)
   new_image = image
+  puts '### CONVERTING ###' if DEBUG
   params.each_pair do |key, value|
     if WHITELIST.include?(key)
-      puts "Performing #{key} with options: #{value == '~' ? 'DEFAULTS' : value.split(';').join(', ')}"
+      puts "Performing #{key} with options: #{value == '~' ? 'DEFAULTS' : value.split(';').join(', ')}" if DEBUG
       if value != '~'
         new_image = new_image.send(key, *value.split(';').map {|v| from_string(v) })
       else 
@@ -13,13 +14,14 @@ def do_magick(image, params)
       end
     end
   end
+  puts '##################' if DEBUG
   new_image
 end
 
 def get_extension(path)
-  exts = path.scan(/\.jpg|\.png|\.jpeg|\.gif/i)
-  if exts.any?
-    exts.last.to_s[1..-1]
+  image_exts = path.scan(Regexp.new("\\#{EXTS.join('|\\')}", 'i'))
+  if image_exts.any?
+    image_exts.last.to_s[1..-1]
   else
     false #404
   end
@@ -27,14 +29,13 @@ end
 
 def get_image(path)
   domain = ENV['SOURCE_DOMAIN'] || 'images'
-  exts = ['.jpg', '.png', '.jpeg', '.gif']
-  exts_rx = Regexp.new("\\#{exts.join('|\\')}", 'i')
+  exts_rx = Regexp.new("\\#{EXTS.join('|\\')}", 'i')
   file = nil
 
   # Remove extension from path if it exists
   path = path[0..(path.index(exts_rx) - 1)] if path.index(exts_rx)
 
-  exts.each do |ext|
+  EXTS.each do |ext|
     begin
       file = open "#{domain}/#{path}#{ext}"
     rescue
@@ -44,11 +45,14 @@ def get_image(path)
   file
 end
 
-def prepare_magick(image_path, params = {})
+def prepare_magick(image_path, ext, params = {})
   image = Magick::ImageList.new
   if (image.from_blob(get_image(image_path).read))
     image = image.first
+    identify_image image if DEBUG
     image = do_magick(image, params)
+    image.format = ext.upcase
+    identify_image image if DEBUG
     image.to_blob
   else
     nil
@@ -95,5 +99,15 @@ def image_path(full_path)
   else
     full_path
   end
+end
+
+def identify_image(img)
+  puts '### IMAGE INFO ###'
+  puts "Format: #{img.format}"
+  puts "Geometry: #{img.columns}x#{img.rows}"
+  puts "Depth: #{img.depth} bits-per-pixel"
+  puts "Colors: #{img.number_colors}"
+  puts "Filesize: #{img.filesize}"
+  puts '##################'
 end
 
