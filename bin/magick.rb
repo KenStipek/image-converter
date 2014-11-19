@@ -33,7 +33,7 @@ def get_extension(path)
 end
 
 def get_image(path)
-  domain = ENV['SOURCE_DOMAIN'] || 'images'
+  domain = FILE_DOMAIN || 'images'
   exts_rx = Regexp.new("\\#{EXTS.join('|\\')}", 'i')
   file = nil
 

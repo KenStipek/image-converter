@@ -3,6 +3,7 @@ require './bin/helper_methods'
 require './bin/magick'
 require './bin/magick_methods'
 
+FILE_DOMAIN    = ENV['FILE_DOMAIN'] || false
 USE_PARAMS     = ENV['USE_PARAMS'] || true
 DEFAULTS       = ENV['DEFAULTS']
 USE_DEFAULTS   = ENV['USE_DEFAULTS'] || true
