@@ -1,19 +1,4 @@
 
-# Extract just the image path from the full path.
-def image_path(full_path)
-	if full_path.index("/#{SPLIT_CHAR}/")
-		image_path = full_path.split("/#{SPLIT_CHAR}/")
-
-		if image_path.length >= 2
-			image_path.last
-		else
-			false
-		end
-	else
-		full_path
-	end
-end
-
 def pair_array_to_hash(ary)
 	if ary.length.odd?
 		false

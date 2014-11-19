@@ -1,4 +1,4 @@
-magick_methods = [
+MAGICK_METHODS = [
   'adaptive_blur',
   'adaptive_blur_channel',
   'adaptive_resize',

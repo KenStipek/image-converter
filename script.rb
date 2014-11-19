@@ -7,18 +7,20 @@ DEFAULTS      = ENV['DEFAULTS']
 TEMPLATES     = ENV['TEMPLATES']
 TEMPLATE_MARK = ENV['TEMPLATE_MARK'] || 'template'
 SPLIT_CHAR    = ENV['SPLIT_CHAR'] || '_'
-WHITELIST     = ENV['WHITELIST'] ? ENV['WHITELIST'].split(',') : magick_methods
+WHITELIST     = ENV['WHITELIST'] ? ENV['WHITELIST'].split(',') : MAGICK_METHODS
+DEBUG         = ENV['DEBUG'] || true
+
+EXTS = ['.jpg', '.png', '.jpeg', '.gif']
 
 get '/favicon.ico' do
 end
 
 get '/*' do
-  # content_type "image/#{request.fullpath[path.index(/|\.jpg|\.png|\.jpeg|\.gif/i)..-1]}"
-  # puts request.fullpath[request.fullpath.index(/|\.jpg|\.png|\.jpeg|\.gif/i)..-1]
-  # puts request.fullpath.index(/|\.jpg|\.png|\.jpeg|\.gif/i)
-  # puts request.fullpath.to_s.index(/|\.jpg|\.png|\.jpeg|\.gif/i)
-  content_type "image/jpg"
+  ext = get_extension request.fullpath
 	image_location = image_path request.fullpath
 	magick_params = image_magick_params request.fullpath
-  prepare_magick image_location, magick_params
+  image = prepare_magick(image_location, ext, magick_params)
+
+  content_type "image/#{ext}"
+  image
 end
