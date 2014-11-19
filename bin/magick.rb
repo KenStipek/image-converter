@@ -16,6 +16,15 @@ def do_magick(image, params)
   new_image
 end
 
+def get_extension(path)
+  exts = path.scan(/\.jpg|\.png|\.jpeg|\.gif/i)
+  if exts.any?
+    exts.last.to_s[1..-1]
+  else
+    false #404
+  end
+end
+
 def get_image(path)
   domain = ENV['SOURCE_DOMAIN'] || 'images'
   exts = ['.jpg', '.png', '.jpeg', '.gif']
@@ -73,4 +82,18 @@ def image_magick_params(full_path)
   params
 end
 
+# Extract just the image path from the full path.
+def image_path(full_path)
+  if full_path.index("/#{SPLIT_CHAR}/")
+    image_path = full_path.split("/#{SPLIT_CHAR}/")
+
+    if image_path.length >= 2
+      image_path.last
+    else
+      false
+    end
+  else
+    full_path
+  end
+end
 
