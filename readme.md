@@ -1,3 +1,4 @@
+[![Code Climate](https://codeclimate.com/github/KenStipek/image-converter/badges/gpa.svg)](https://codeclimate.com/github/KenStipek/image-converter)
 # Lets Convert Some Images!
 It is very common for modern web applications to handle image storage, conversion, and hosting. To reduce bandwidth use, applcations convert uploaded images into various sizes, quality levels, and formats. This can be very processor intensive and limiting as the applications are only able to get the image formats that they have already generated (and genarating new images can take forever for large image sets).
 
