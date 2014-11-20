@@ -35,29 +35,20 @@ All the configuration for the app takes place in the servers environmental varia
 
 ###### Available Settings
 
-```
-FILE_DOMAIN
-```
+
+###### FILE_DOMAIN
 Defaults to /images folder on the local server.
 
-```
-USE_PARAMS
-```
+###### USE_PARAMS
 Whether or not to allow paramater defined methods to be used. Default is true.
 
-```
-DEFAULTS
-```
+###### DEFAULTS
 Default methods to used. They are defined the same way params in your env string (e.g. ```DEFAULTS='resize_to_fit/100/oil_paint/~'```). Defualts override the whitelist.
 
-```
-USE_DEFAULTS
-```
+###### USE_DEFAULTS
 Whether or not to use any set DEFAULTS.
 
-```
-TEMPLATES
-```
+###### TEMPLATES
 You can use templates like defaults, but you can have multiple of them. They are set the same way as params, but split up using '&'. Here is an example of setting up two templates named 'th' and 'oil' respectfully:
 ```
 TEMPLATES='th&thumbnail/50/100&oil&oil_paint/~'
@@ -70,14 +61,10 @@ http://cdn.example.com/template/th/_/images/be-cool.png
 ```
 Would load the image using the 'th' template.
 
-```
-USE_TEMPLATES
-```
+###### USE_TEMPLATES
 Whether or not to use templates, defaults is true.
 
-```
-TEMPLATE_MARK
-```
+###### TEMPLATE_MARK
 You can set your own template mark, by default this is 'template' but can be switched to anything you want. So lets say you set this to 't' the the above path would be:
 ```
 http://cdn.example.com/t/th/_/images/be-cool.png
@@ -87,22 +74,16 @@ Rather then
 http://cdn.example.com/template/th/_/images/be-cool.png
 ````
 
-```
-SPLIT_CHAR
-```
+###### SPLIT_CHAR
 The path is split between the methods (or templates) used and the actual path of the image. By default this is split using '_' but you can set what ever you want. Lets say you set SPLIT_CHAR to 'icons' then the path would look like this:
 ```
 http://cdn.example.com/t/th/icons/images/be-cool.png
 ```
 
-```
-WHITELIST
-```
+###### WHITELIST
 You can set a whitelist of methods that are allowed to by run against your server. They are simply comma seperated.
 
-```
-DEBUG
-```
+###### DEBUG
 The server prints image info to std_out by default, you can turn this off by setting this to false.
 
 ## Sandbox
@@ -113,6 +94,9 @@ DEFAULTS:  resize_to_fit/300
 TEMPLATES: simple&gaussian_blur/~/quantize/60&flow&wave/~/oil_paint/~
 WHITELIST: gaussian_blur,wave,sharpen,oil_paint,quantize
 ```
+
+###### Examples
+
 https://limitless-island-6276.herokuapp.com/be-cool.jpg
 
 https://limitless-island-6276.herokuapp.com/template/simple/_/be-cool.jpg
