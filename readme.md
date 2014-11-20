@@ -80,6 +80,12 @@ The path is split between the methods (or templates) used and the actual path of
 http://cdn.example.com/t/th/icons/images/be-cool.png
 ```
 
+###### WHITELIST
+You can set a whitelist of methods that are allowed to by run against your server. They are simply comma seperated.
+
+###### DEBUG
+The server prints image info to std_out by default, you can turn this off by setting this to false.
+
 ### Settings Quick Reference
 ```
 FILE_DOMAIN    = ENV['FILE_DOMAIN'] || false
@@ -93,12 +99,6 @@ SPLIT_CHAR     = ENV['SPLIT_CHAR'] || '_'
 WHITELIST      = ENV['WHITELIST'] ? ENV['WHITELIST'].split(',') : MAGICK_METHODS
 DEBUG          = ENV['DEBUG'] || true
 ```
-
-###### WHITELIST
-You can set a whitelist of methods that are allowed to by run against your server. They are simply comma seperated.
-
-###### DEBUG
-The server prints image info to std_out by default, you can turn this off by setting this to false.
 
 ## Sandbox
 You can experiment with using paramaters using my sandbox server at https://limitless-island-6276.herokuapp.com. Here are the settings on it:
