@@ -22,7 +22,7 @@ Because some CDN's ignore everything after the '?' in a request and wont include
 
 # Getting Started
 1. Fork this Repo
-2. Download and set up the Sinatra app (see this if need help with this)
+2. Download and set up the Sinatra app (see [this](http://www.sinatrarb.com/intro.html) if you need help)
 3. Install ImageMagick ```brew install imagemagick``` on OSX using Homebrew, more info here
 4. Install the Gems using ```bundle install```
 5. Start playing with it on your local system and figure out what settings you need
