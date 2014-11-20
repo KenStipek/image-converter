@@ -8,19 +8,19 @@ This tool is designed to sit between an application's file store and its content
 This tool is built on top of ImageMagick and RMagick. So pretty much everything ImageMagick can do, this tool can do to (see a [full list here](https://github.com/KenStipek/image-converter/blob/readme/methods.md), and the [RMagick API docs here](http://www.imagemagick.org/RMagick/doc/))!
 
 ### What does a request look like?
-Lets say you have an images stored at http://example.com/images/ and you wanted to get an image called be-cool.jpg, blur it, make it look like an oil painting, remove some of the colors, and convert it to a PNG. Assuming you have your CDN set up at cdn.example.com and that CDN's origin server is pointing at this tool all you would need to do is include the ImageMagick methods and attributes in the path before the path split character.
+Lets say you have an images stored at http://example.com/images/ and you wanted to get an image called be-cool.jpg, remove some of the colors, and convert it to a PNG. Assuming you have your CDN set up at cdn.example.com and that CDN's origin server is pointing at this tool all you would need to do is include the ImageMagick methods and attributes in the path before the path split character.
 ```
-http://cdn.example.com/quantize/30/oil_paint/~/gaussian_blur/~/_/images/be-cool.png
+http://cdn.example.com/quantize/10/_/images/be-cool.png
 ```
 The tool ignores the file extension and converts whatever image it finds with the given name to the requested extension.
 
 You don't have to put the methods in path if you don't want to. You can set up defaults and templates using your server's environmental variables.
 
 ###### Original Image
-![original image](https://limitless-island-6276.herokuapp.com/images/be-cool.jpg)
+![original image](https://limitless-island-6276.herokuapp.com/be-cool.jpg)
 
 ###### Converted Image
-![converted image](https://limitless-island-6276.herokuapp.com/quantize/30/oil_paint/~/gaussian_blur/~/_/be-cool.png)
+![converted image](https://limitless-island-6276.herokuapp.com/quantize/10/_/be-cool.png)
 
 ### Why use the path and not GET params for the methods and attributes?
 Because some CDN's ignore everything after the '?' in a request and wont include them in the request to the origin server.
