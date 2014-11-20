@@ -17,10 +17,10 @@ The tool ignores the file extension and converts whatever image it finds with th
 You don't have to put the methods in path if you don't want to. You can set up defaults and templates using your server's environmental variables.
 
 ###### Original Image
-![original image](https://limitless-island-6276.herokuapp.com/_/be-cool.jpg)
+![original image](https://limitless-island-6276.herokuapp.com/_/be-cool.jpg?1)
 
 ###### Converted Image
-![converted image](https://limitless-island-6276.herokuapp.com/quantize/70/oil_paint/~/_/be-cool.png)
+![converted image](https://limitless-island-6276.herokuapp.com/quantize/70/oil_paint/~/_/be-cool.png?1)
 
 ### Why use the path and not GET params for the methods and attributes?
 Because some CDN's ignore everything after the '?' in a request and wont include them in the request to the origin server.
