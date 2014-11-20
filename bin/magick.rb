@@ -1,5 +1,3 @@
-require 'rmagick'
-require 'open-uri'
 
 def do_magick(image, params)
   new_image = image

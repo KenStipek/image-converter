@@ -1,4 +1,6 @@
 require 'sinatra'
+require 'rmagick'
+require 'open-uri'
 require './bin/helper_methods'
 require './bin/magick'
 require './bin/magick_methods'
