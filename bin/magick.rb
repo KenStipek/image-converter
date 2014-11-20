@@ -4,7 +4,7 @@ def do_magick(image, params)
   puts '### CONVERTING ###' if DEBUG
   begin
     params.each_pair do |key, value|
-      if WHITELIST.include?(key)
+      if WHITELIST.include?(key) of DEFAULTS.split('/').include?(key)
         puts "Performing #{key} with options: #{value == '~' ? 'DEFAULTS' : value.split(';').join(', ')}" if DEBUG
         if value != '~'
           new_image = new_image.send(key, *value.split(';').map {|v| from_string(v) })
