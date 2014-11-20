@@ -80,6 +80,20 @@ The path is split between the methods (or templates) used and the actual path of
 http://cdn.example.com/t/th/icons/images/be-cool.png
 ```
 
+### Settings Quick Reference
+```
+FILE_DOMAIN    = ENV['FILE_DOMAIN'] || false
+USE_PARAMS     = ENV['USE_PARAMS'] || true
+DEFAULTS       = ENV['DEFAULTS']
+USE_DEFAULTS   = ENV['USE_DEFAULTS'] || true
+TEMPLATES      = ENV['TEMPLATES']
+USE_TEMPLATES  = ENV['USE_TEMPLATES'] || true
+TEMPLATE_MARK  = ENV['TEMPLATE_MARK'] || 'template'
+SPLIT_CHAR     = ENV['SPLIT_CHAR'] || '_'
+WHITELIST      = ENV['WHITELIST'] ? ENV['WHITELIST'].split(',') : MAGICK_METHODS
+DEBUG          = ENV['DEBUG'] || true
+```
+
 ###### WHITELIST
 You can set a whitelist of methods that are allowed to by run against your server. They are simply comma seperated.
 
