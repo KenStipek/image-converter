@@ -123,3 +123,40 @@ https://limitless-island-6276.herokuapp.com/sharpen/~/_/be-cool.jpg
 
 https://limitless-island-6276.herokuapp.com/gaussian_blur/~/quantize/100/_/be-cool.jpg
 
+# Licenses
+###### ImageMagick
+http://www.imagemagick.org/script/license.php
+
+###### RMagick
+https://github.com/rmagick/rmagick/blob/master/LICENSE
+
+###### Sinatra
+https://github.com/sinatra/sinatra/blob/master/LICENSE
+
+###### Image Converter (this tool)
+
+Copyright © 2014 Ken Stipek
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+### Credits
+Ken Stipek - [@KenStipek](http://twitter.com/kenstipek)
+
+Special thanks to Mike Maddox and Thomas Beirne
