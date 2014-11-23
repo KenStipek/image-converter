@@ -21,9 +21,14 @@ You don't have to put the methods in path if you don't want to. You can set up d
 Because some CDN's ignore everything after the '?' in a request and wont include them in the request to the origin server.
 
 # Getting Started
+
+#### The Fast Way
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
+#### The Long Way
 1. Fork this Repo
-2. Download and set up the Sinatra app (see this if need help with this)
-3. Install ImageMagick ```brew install imagemagick``` on OSX using Homebrew, more info here
+2. Download and set up the Sinatra app ([see this](http://www.sinatrarb.com/documentation.html) if need help with this)
+3. Install ImageMagick ```brew install imagemagick``` on OSX using Homebrew, more [info here](http://brew.sh/)
 4. Install the Gems using ```bundle install```
 5. Start playing with it on your local system and figure out what settings you need
 6. Deploy and start rocking (don't forget to change your CDN's origin server)
