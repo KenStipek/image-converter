@@ -2,6 +2,6 @@
   "name": "Image Converter",
   "description": "An inline image converter designed to be the origin server for a CDN",
   "repository": "https://github.com/KenStipek/image-converter",
-  "logo": "https://github.com/KenStipek/image-converter/blob/master/images/be-cool.jpg",
+  "logo": "https://raw.githubusercontent.com/KenStipek/image-converter/master/images/be-cool.jpg",
   "keywords": ["image", "convert", "image", "magick", "rmagick", "sinatra"]
 }
