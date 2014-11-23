@@ -6,7 +6,7 @@ It is very common for modern web applications to handle image storage, conversio
 This tool is designed to sit between an application's file store and its content distribution network (CDN). It works by setting your CDN's origin server to this tool. So when an image is requested from your CDN it request the image from this tool, this tool then grabs the original image from your file store, processes it (resize, quality, format conversion, etc...), and send it back to the CDN. Now whenever that image is requested, it will simply respond with the image stored in the CDN (and won't re-process it).
 
 ### Cool! What all can this tool do?
-This tool is built on top of ImageMagick and RMagick. So pretty much everything ImageMagick can do (see a [full list here](https://github.com/KenStipek/image-converter/blob/readme/methods.md), and the [RMagick API docs here](http://www.imagemagick.org/RMagick/doc/))!
+This tool is built on top of ImageMagick and RMagick. So pretty much everything ImageMagick can do (see a [full list here](https://github.com/KenStipek/image-converter/blob/methods.md), and the [RMagick API docs here](http://www.imagemagick.org/RMagick/doc/))!
 
 ### What does a request look like?
 Lets say you have an images stored at http://example.com/images/ and you wanted to get an image called be-cool.jpg, remove some of the colors, make it look like an oil painting, and convert it to a PNG. Assuming you have your CDN set up at cdn.example.com and that CDN's origin server is pointing at this tool all you would need to do is include the ImageMagick methods and attributes in the path before the path split character.
@@ -27,11 +27,12 @@ Because some CDN's ignore everything after the '?' in a request and wont include
 
 #### The Long Way
 1. Fork this Repo
-2. Download and set up the Sinatra app ([see this](http://www.sinatrarb.com/documentation.html) if need help with this)
-3. Install ImageMagick ```brew install imagemagick``` on OSX using Homebrew, more [info here](http://brew.sh/)
-4. Install the Gems using ```bundle install```
-5. Start playing with it on your local system and figure out what settings you need
-6. Deploy and start rocking (don't forget to change your CDN's origin server)
+2. [Install Ruby](https://www.ruby-lang.org/en/downloads/)
+3. Download and set up the Sinatra app (see [this](http://www.sinatrarb.com/intro.html) if you need help)
+4. Install ImageMagick ```brew install imagemagick``` on OSX using Homebrew, more [info here](http://brew.sh/)
+5. Install the Gems using ```bundle install```
+6. Start playing with it on your local system and figure out what settings you need
+7. Deploy and start rocking (don't forget to change your CDN's origin server)
 
 If you do not provide an origin server the app will default to pulling images from the /images folder.
 
@@ -163,4 +164,4 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ### Credits
 Ken Stipek - [@KenStipek](http://twitter.com/kenstipek)
 
-Special thanks to Mike Maddox and Thomas Beirne
+Special thanks to Mike Maddox and [Thomas Beirne](http://github.com/HankMcCoy) ([@beirnet](http://twitter.com/beirnet))
